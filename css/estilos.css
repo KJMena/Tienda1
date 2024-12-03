@@ -1,0 +1,61 @@
+:root {
+    --violet: #6b0047;
+    --light-pink: #ffc0cb;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fFC0CB;
+}
+
+header {
+    background-color: var(--violet);
+    color: var(--white);
+}
+
+footer {
+    background-color: var(--violet);
+    color: var(--white);
+}
+
+.intro {
+    height: 100vh;
+    background: url(../img/fondo1.png) no-repeat center center/cover;
+}
+
+.btn-pink {
+    background-color: var(--light-pink);
+    color: var(--violet);
+    border: 1px solid var(--violet);
+    transition: all 0.3s ease;
+}
+
+.btn-pink:hover {
+    background-color: var(--violet);
+    color: var(--light-pink);
+}
+
+.card {
+    border: 1px solid var(--violet);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    color: var(--violet);
+}
+
+.progress-bar {
+    background-color: var(--violet);
+}
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid var(--violet);
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: var(--violet);
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KJMena</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <header class="bg-violeta text-center text-white py-3">
+        <h1>KJMena</h1>
+    </header>
+    <section class="intro d-flex justify-content-center align-items-center text-center">
+        <div>
+            <h1 class="display-3">Bienvenido a KJMena</h1>
+
+            <p>Tu tienda de confianza</p>
+
+        </div>
+
+    </section>
+    <section class="container my-4" id="contenedor">
+        <div class="text-center mb-4">
+            <input type="text" class="form-control w-50 mx-auto" placeholder="Buscar productos..." v-model="terminoBusqueda">
+            <select class="form-select w-50 mx-auto my-3" v-model="categoriaSeleccionada">
+                <option value="">Todas las categorías</option>
+                <option v-for="categoria in categorias" :key="categoria">{{ categoria }}</option>
+            </select>
+        </div>
+
+        <div v-if="categoriaSeleccionada" class="text-center">
+            <p class="alert alert-info">Mostrando productos de la categoría: <strong>{{ categoriaSeleccionada }}</strong></p>
+        </div>
+
+        <div class="progress" role="progressbar" aria-label="example with label" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-bar" :style="{ width: porcentajeProgreso + '%' }" :class="color">
+                {{ porcentajeProgreso }}%
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-4" v-for="(producto, index) in productosFiltrados" :key="producto.id">
+                <div class="card border-violeta">
+                    <img :src="producto.thumbnail" class="card-img-top" :alt="producto.title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.title }}</h5>
+                        <p class="card-text">Precio: ${{ producto.price }}</p>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-sm btn-pink" @click="disminuirCantidad(producto)" :disabled="producto.cantidad <= 1">-</button>
+                        <input type="number" v-model.number="producto.cantidad" min="1" max="10" readonly />
+                        <button class="btn btn-sm btn-pink" @click="aumentarCantidad(producto)" :disabled="producto.cantidad >= 10">+</button>
+                    </div>
+                    <div class="card-body text-center">
+                        <button type="button" class="btn">Comprar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-violeta text-center text-white py-3">
+        <p>&copy; 2024 KJMena - Todos los derechos reservados</p>
+    </footer>
+
+    <script src="js/vue3.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/funciones.js"></script>
+</body>
+
+</html>
